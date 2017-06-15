@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.User;
-import util.UserConnectionUtil;
+import util.ConnectionUtil;
 
 
 
@@ -14,7 +14,7 @@ public class UserDAO {
 	public void register(User user) throws Exception {
 		String sql = "insert into person(name,emailid,password) values (?,?,?)";
 
-		Connection con = UserConnectionUtil.getConnection();
+		Connection con = ConnectionUtil.getConnection();
 		System.out.println("Conn:" + con);
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString(1, user.getName());
@@ -29,7 +29,7 @@ public class UserDAO {
 	public User login(String emailid, String password) throws Exception {
 		String sql = "select id,name,emailid,password from person where emailid = ? and password = ? ";
 		User user = null;
-Connection con=UserConnectionUtil.getConnection();
+Connection con=ConnectionUtil.getConnection();
 PreparedStatement pst= con.prepareStatement(sql);
 pst.setString(1, emailid);
 pst.setString(2, password);

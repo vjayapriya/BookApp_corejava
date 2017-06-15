@@ -1,4 +1,4 @@
-package bookuserapp;
+package model;
 
 import java.time.LocalDate;
 

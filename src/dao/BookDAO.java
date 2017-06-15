@@ -1,4 +1,4 @@
-package bookuserapp;
+package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -7,12 +7,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Book;
+import util.ConnectionUtil;
+
 
 public class BookDAO {
 	public void register(Book book) throws Exception {
 		String sql = "insert into books(name,price,pub_date,author_id)values(?,?,?,?)";
 
-		Connection con = BookConnectionUtil.getConnection();
+		Connection con = ConnectionUtil.getConnection();
 		System.out.println("Conn:" + con);
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString(1, book.getName());
@@ -28,7 +31,7 @@ public class BookDAO {
 		System.out.println("BookDAO-> register: " + book);
 	}
 	public void listbook() throws Exception {
-		Connection con = BookConnectionUtil.getConnection();
+		Connection con = ConnectionUtil.getConnection();
 		String sql = "select id,name,price,author_id,pub_date from books";
 		PreparedStatement pst = con.prepareStatement(sql);
 		List<Book> booklist = new ArrayList<Book>();
@@ -50,7 +53,7 @@ public class BookDAO {
 		for (Book book : booklist) {
 			System.out.println(book);
 		}
-		return listbook;
+		
 
 	}
 

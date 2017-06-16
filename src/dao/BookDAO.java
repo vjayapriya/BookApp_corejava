@@ -30,7 +30,7 @@ public class BookDAO {
 
 		System.out.println("BookDAO-> register: " + book);
 	}
-	public void listbook() throws Exception {
+	public List<Book> listbook() throws Exception {
 		Connection con = ConnectionUtil.getConnection();
 		String sql = "select id,name,price,author_id,pub_date from books";
 		PreparedStatement pst = con.prepareStatement(sql);
@@ -41,8 +41,9 @@ public class BookDAO {
 			String name = rs.getString("name");
 			int price = rs.getInt("price");
 			int authour_id = rs.getInt("author_id");
-			Date pub_date = rs.getDate("date");
+			Date pub_date = rs.getDate("pub_date");
 			Book book = new Book();
+			book.setId(id);
 			book.setName(name);
 			book.setPrice(price);
 			book.setAutuor_id(authour_id);
@@ -53,7 +54,7 @@ public class BookDAO {
 		for (Book book : booklist) {
 			System.out.println(book);
 		}
-		
+		return booklist;
 
 	}
 

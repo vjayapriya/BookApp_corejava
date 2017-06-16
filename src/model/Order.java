@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Order {
 	private int id;
@@ -8,7 +9,7 @@ public class Order {
 	private int userId;
 	private int bookId;
 	private String status;
-	private LocalDate orderedDate;
+	private LocalDateTime orderedDate;
 	public int getId() {
 		return id;
 	}
@@ -39,10 +40,10 @@ public class Order {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public LocalDate getOrderedDate() {
+	public LocalDateTime getOrderedDate() {
 		return orderedDate;
 	}
-	public void setOrderedDate(LocalDate orderedDate) {
+	public void setOrderedDate(LocalDateTime orderedDate) {
 		this.orderedDate = orderedDate;
 	}
 	@Override

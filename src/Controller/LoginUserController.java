@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import model.User;
@@ -29,17 +30,18 @@ public class LoginUserController extends HttpServlet {
 		
 		try{
 			user = userDAO.login(email, password);
-			
-		    }catch(Exception e){
+					    }catch(Exception e){
 			e.printStackTrace();
 		}
-		out.println("user="+ user);
+		System.out.println("user="+ user);
 		if(user==null)
 		{
 			response.sendRedirect("login.jsp");
 		}
 		else
 		{
+			HttpSession session= request.getSession();
+			session.setAttribute("Logged_in_User",user);
 			response.sendRedirect("listbooks.jsp");
 		}
 

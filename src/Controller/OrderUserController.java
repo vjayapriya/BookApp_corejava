@@ -43,6 +43,8 @@ public class OrderUserController extends HttpServlet {
 	}catch(Exception e){
 		e.printStackTrace();
 	}
+ response.sendRedirect("listorder.jsp");
+
 	}
 
 

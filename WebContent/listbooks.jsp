@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="model.User"%>
 <%@page import="model.Book"%>
 <%@page import="dao.BookDAO"%>
 <%@page import="java.util.List"%>
@@ -8,9 +9,23 @@
 <title>List Books</title>
 </head>
 <body>
+<%
+User user = (User) session.getAttribute("Logged_in_User");
+//out.println("User:"+ user);
+if (user == null ) {
+	
+	response.sendRedirect("login.jsp");
+	
+}
+else
+{
+%>
+Welcome<%=user.getName() %>  ( <a href="LogoutUserController" > Logout </a>)
+
 <h3>List Books</h3>
 <tbody>
 </tbody>
+
 <%
 BookDAO bookDAO=new BookDAO();
 List<Book>bookList=bookDAO.listbook();
@@ -41,5 +56,7 @@ List<Book>bookList=bookDAO.listbook();
 	%>
 	
 </table>
+<a href="order.jsp">Add Order</a>
+<%} %>
 </body>
 </html>

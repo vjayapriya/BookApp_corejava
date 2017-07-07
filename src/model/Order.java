@@ -7,7 +7,19 @@ public class Order {
 	private int id;
 	private int quantity;
 	private int userId;
+	private String username;
 	private int bookId;
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", quantity=" + quantity + ", userId=" + userId + ", username=" + username
+				+ ", bookId=" + bookId + ", status=" + status + ", orderedDate=" + orderedDate + "]";
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	private String status;
 	private LocalDateTime orderedDate;
 	public int getId() {
@@ -46,10 +58,6 @@ public class Order {
 	public void setOrderedDate(LocalDateTime orderedDate) {
 		this.orderedDate = orderedDate;
 	}
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", quantity=" + quantity + ", userId=" + userId + ", bookId=" + bookId + ", status="
-				+ status + ", orderedDate=" + orderedDate + "]";
-	}
+	
 	
 }

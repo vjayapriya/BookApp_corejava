@@ -1,3 +1,4 @@
+
 <%@page import="model.Order"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.OrderDAO"%>
@@ -10,15 +11,16 @@
 <title>ORDER LISTS</title>
 </head>
 <body>
+
 <%
 OrderDAO orderDAO=new OrderDAO();
 List<Order> orderList =orderDAO.listorder();
-//out.println("Books:"+bookList);
 %>
 <table border="1">
 		<thead>
 			<tr>
 				<th>userId</th>
+				<th>userName</th>
 				<th>bookId</th>
 				<th>quantity</th>
 				<th>Status</th>
@@ -32,6 +34,7 @@ List<Order> orderList =orderDAO.listorder();
 		for (Order b : orderList) {
 			out.println("<tr>");
 			out.println("<td>" + b.getUserId() + "</td>");
+			out.println("<td>" + b.getUsername() + "</td>");
 			out.println("<td>" + b.getBookId() + "</td>");
 			out.println("<td>" + b.getQuantity() + "</td>");
 			out.println("<td>" + b.getStatus() + "</td>");

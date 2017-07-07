@@ -49,6 +49,7 @@ int author_id1 =Integer.parseInt(author_id);
 		userDAO.register(user);
 	}catch(Exception e){
 		e.printStackTrace();
+
 	}
 	}
 
